@@ -2,7 +2,7 @@ platform :ios, '13.0'
 
 desc "Build the app"
 lane :build do
-  gym(scheme: "YourAppScheme") # Replace with your app's scheme
+  gym(scheme: "Release") # Replace with your app's scheme
 end
 
 desc "Upload to TestFlight"
