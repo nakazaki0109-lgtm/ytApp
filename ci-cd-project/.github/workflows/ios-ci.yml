@@ -1,0 +1,41 @@
+name: iOS CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7' # Specify the Ruby version
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build the app
+        run: |
+          cd ios-app
+          xcodebuild -scheme YourAppScheme -sdk iphoneos -configuration Release archive -archivePath ${{ github.workspace }}/YourApp.xcarchive
+
+      - name: Run tests
+        run: |
+          cd ios-app
+          xcodebuild test -scheme YourAppScheme -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest'
+
+      - name: Deploy to TestFlight
+        run: |
+          bundle exec fastlane beta
+        env:
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}

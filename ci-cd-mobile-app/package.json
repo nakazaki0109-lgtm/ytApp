@@ -1,0 +1,31 @@
+{
+  "name": "ci-cd-mobile-app",
+  "version": "1.0.0",
+  "description": "A mobile application with CI/CD setup for TestFlight deployment.",
+  "main": "src/App.js",
+  "scripts": {
+    "start": "react-native start",
+    "build": "react-native build",
+    "test": "jest",
+    "deploy": "fastlane ios beta"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ci-cd-mobile-app.git"
+  },
+  "keywords": [
+    "mobile",
+    "ci-cd",
+    "testflight"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-native": "^0.64.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "fastlane": "^2.7.0"
+  }
+}

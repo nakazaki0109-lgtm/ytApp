@@ -1,0 +1,31 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+api_key = app_store_connect_api_key(
+  key_id: "SBAVYK2SM3",            # App Store Connect APIキーのID
+  issuer_id: "bc005183-4c72-4ffa-b468-4bebe0e56603",      # 発行者ID
+  key_filepath: "./APIKey/AuthKey.p8"      # `.p8` ファイルのパス
+)
+
+platform :ios do
+  desc "Push app to TestFlight"
+  lane :custom_lane do
+    build_app(scheme: "Release") # Xcodeのスキーム名を指定
+    upload_to_testflight(api_key: api_key)
+    # add actions here: https://docs.fastlane.tools/actions
+  end
+end

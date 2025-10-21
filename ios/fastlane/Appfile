@@ -1,0 +1,16 @@
+app_identifier("linetotest2") # The bundle identifier of your app
+apple_id("nakazaki.webnics@gmail.com") # Your Apple Developer Portal username
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push app to TestFlight"
+  lane :upload_to_testflight do
+    build_app(scheme: "Release") # Xcodeのスキーム名を指定
+    upload_to_testflight
+  end
+end
+
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

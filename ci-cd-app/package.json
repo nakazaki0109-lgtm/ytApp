@@ -1,0 +1,27 @@
+{
+  "name": "ci-cd-app",
+  "version": "1.0.0",
+  "description": "A sample application to demonstrate CI/CD with TestFlight deployment.",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"No tests specified\" && exit 0",
+    "deploy": "echo \"Deploying to TestFlight...\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ci-cd-app.git"
+  },
+  "keywords": [
+    "ci",
+    "cd",
+    "testflight",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  }
+}
